@@ -1,0 +1,16 @@
+[Unit]
+Description=Microwaffle
+After=network.target
+
+[Service]
+ExecStart=/usr/bin/node main.js
+WorkingDirectory=/home/pi/microwaffle_hardware
+StandardOutput=inherit
+StandardError=inherit
+Restart=always
+User=root
+Restart=always
+RestartSec=30
+
+[Install]
+WantedBy=multi-user.target
