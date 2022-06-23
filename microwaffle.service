@@ -4,7 +4,7 @@ After=network.target
 
 [Service]
 ExecStart=/usr/bin/node main.js
-WorkingDirectory=/home/pi/microwaffle_hardware
+WorkingDirectory=/home/microwaffle/microwaffle_hardware
 StandardOutput=inherit
 StandardError=inherit
 Restart=always
