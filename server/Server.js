@@ -23,24 +23,25 @@ const ioHttps = new io.Server(httpsServer);
 
 module.exports = class Server {
     start(){
-        app.use((req, res, next) => {
-            if (req.secure) {
-                utils.log(TAG, "Https: next");
-                next();
-            }
-            else {
-                utils.log(TAG, "Http: redirect");
-                res.redirect("https://" + req.hostname + ":" + config.server.https_node_port);
-            }
-        });
+        // app.use((req, res, next) => {
+        //     if (req.secure) {
+        //         utils.log(TAG, "Https: next");
+        //         next();
+        //     }
+        //     else {
+        //         utils.log(TAG, "Http: redirect");
+        //         res.redirect("https://" + req.hostname + ":" + config.server.https_node_port);
+        //     }
+        // });
         app.use(express.static(config.server.web_dir));
 
         httpServer.listen(config.server.http_node_port, () => {
             utils.log(TAG, "listening on *:" + config.server.http_node_port);
+            new messageHandler(ioHttp);
         });
-        httpsServer.listen(config.server.https_node_port, () => {
-            utils.log(TAG, "listening on *:" + config.server.https_node_port);
-            new messageHandler(ioHttps);
-        })
+        // httpsServer.listen(config.server.https_node_port, () => {
+        //     utils.log(TAG, "listening on *:" + config.server.https_node_port);
+        //     new messageHandler(ioHttps);
+        // })
     }
 }
