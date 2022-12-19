@@ -1,6 +1,7 @@
 {
   "server": {
-    "node_port": 80,
+    "http_node_port": 80,
+    "https_node_port": 443,
     "web_dir": "www"
   },
   "hardware": {
